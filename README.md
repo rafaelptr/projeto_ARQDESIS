@@ -2,7 +2,7 @@
 Projeto Android com Java Web
 
 # Autores 
-Alerson Santana 
-Fábio Alves
+Alerson Santana  
+Fábio Alves  
 Rafael Petronilio
 
