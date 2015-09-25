@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Aula 11 Voos</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="label_opcoes">Escolha as opções:</string>
+    <string name="label_aeroporto_origem">Aeroporto Origem: </string>
+    <string name="label_aeroporto_destino">Aeroporto Destino: </string>
+    <string name="botao_ok">Ok</string>
+
+    <string-array name="aeroportos">
+        <item>Escolha o aeroporto</item>
+        <item>Congonhas</item>
+        <item>Guarulhos</item>
+    </string-array>
+
+    <string name="data_voo">Data do voo: </string>
+
+    <string name="title_activity_lista_voos">Lista de Voos</string>
+    <string name="txt_lista_nenhum_voo">Nenhum voo encontrado.</string>
+    <string name="txt_lista_voo">Foram encontrado os seguintes voos: </string>
+
+</resources>
+
