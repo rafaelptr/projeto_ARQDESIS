@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +49,12 @@ public class IdiomaController extends HttpServlet {
 			e.printStackTrace();
 		}
 		Idioma.trocarIdioma(request, index);
-		int ide = (int)(request.getSession().getAttribute("idiomaSelecionado")!= null ? request.getSession().getAttribute("idiomaSelecionado"): 0);
+	}
+
+    @Override
+	public void init(ServletConfig config){
+		//todos os servlets do menu devem conter este metodo
+		ServiceLookup.setupDB();
 	}
 
 }

@@ -1,20 +1,32 @@
 package model;
 
-
+import factory.DAOFactory;
+import to.UsuarioTO;
 
 public class Usuario {
+	public static final int ANTENDENTE = 1;
+	public static final int ADMINISTRADOR = 2;
 	
 	private int id;
 	private String usuario;
 	private String senha;
-	private String perfil;
-
+	private int perfil;
+	
+	public UsuarioTO incluir(UsuarioTO to){
+		return DAOFactory.getUsuarioDAO().incluir(to);
+	}
+	
+	public UsuarioTO buscar(UsuarioTO to){
+		return DAOFactory.getUsuarioDAO().buscar(to);
+	}
+	
+	
 	public Usuario(){
 		this.usuario = "";
 		this.senha = "";
-		this.perfil = "";
+		this.perfil = 0;
 	}
-	public Usuario(String usuario,String senha,String perfil){
+	public Usuario(String usuario,String senha,int perfil){
 		this.setSenha(senha);
 		this.setPerfil(perfil);
 		this.setUsuario(usuario);
@@ -41,10 +53,10 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getPerfil() {
+	public int getPerfil() {
 		return this.perfil;
 	}
-	public void setPerfil(String perfil) {
+	public void setPerfil(int perfil) {
 		this.perfil = perfil;
 	}
 

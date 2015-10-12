@@ -44,19 +44,19 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" >
 		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#"><%= Idioma.para(request, "inicio")%></a></li>
+		        <li class="active"><a href="./"><%= Idioma.para(request, "inicio")%></a></li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[Aeroportos]<span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Idioma.para(request, "aeroporto") %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">[Cadastrar]</a></li>
-		            <li><a href="#">[Consultar]</a></li>
+		            <li><a href="./CadastrarAeroporto"><%= Idioma.para(request, "cadastrar") %></a></li>
+		            <li><a href="./ListagemAeroporto"><%= Idioma.para(request, "consultar") %></a></li>
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[Voos]<span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Idioma.para(request, "voo") %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">[Cadastrar]</a></li>
-		            <li><a href="#">[Consultar]</a></li>
+		            <li><a href="./CadastrarVoo"><%= Idioma.para(request, "cadastrar") %></a></li>
+		            <li><a href="./ListagemVoo"><%= Idioma.para(request, "consultar") %></a></li>
 		          </ul>
 		        </li>
 		        <li class="dropdown">
@@ -67,17 +67,10 @@
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[Passagens]<span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Idioma.para(request, "passagem") %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">[Cadastrar]</a></li>
-		            <li><a href="#">[Consultar]</a></li>
-		          </ul>
-		        </li>
-		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[Usuarios]<span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">[Cadastrar]</a></li>
-		            <li><a href="#">[Consultar]</a></li>
+		            <li><a href="#"><%= Idioma.para(request, "cadastrar") %></a></li>
+		            <li><a href="#"><%= Idioma.para(request, "consultar") %></a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -115,3 +108,15 @@
 		
 		%>
 	<div class="container-fluid">
+	<% if(request.getAttribute("erroMsg")!= null){ %>
+		<div class="alert alert-danger"><%= Idioma.para(request, ""+request.getAttribute("erroMsg")) %></div>	
+	<%} %>
+	<% if(request.getAttribute("succMsg")!= null){ %>
+		<div class="alert alert-success"><%= Idioma.para(request, ""+request.getAttribute("succMsg")) %></div>	
+	<%} %>
+	<% if(request.getAttribute("infoMsg")!= null){ %>
+		<div class="alert alert-info"><%= Idioma.para(request, ""+request.getAttribute("infoMsg")) %></div>	
+	<%} %>
+	<% if(request.getAttribute("warnMsg")!= null){ %>
+		<div class="alert alert-warning"><%= Idioma.para(request, ""+request.getAttribute("warnMsg")) %></div>	
+	<%} %>

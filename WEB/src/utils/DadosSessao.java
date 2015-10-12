@@ -2,24 +2,24 @@ package utils;
 
 import javax.servlet.http.HttpServletRequest;
 
-import model.Usuario;
+import to.UsuarioTO;
 
 public class DadosSessao {
 	
 	public static String usuarioLogado(HttpServletRequest request){
-		Usuario usuario = (Usuario)request.getSession().getAttribute("usuarioLogado");
-		if(usuario != null){
-			return usuario.getUsuario();
+		UsuarioTO to = (UsuarioTO)request.getSession().getAttribute("usuarioLogado");
+		if(to != null){
+			return to.usuario;
 		}
 		return "";
 	}
 	
-	public static String usuarioPefil(HttpServletRequest request){
-		Usuario usuario = (Usuario)request.getSession().getAttribute("usuarioLogado");
-		if(usuario != null){
-			return usuario.getPerfil();
+	public static int usuarioPefil(HttpServletRequest request){
+		UsuarioTO to = (UsuarioTO)request.getSession().getAttribute("usuarioLogado");
+		if(to != null){
+			return to.perfil;
 		}
-		return "";
+		return 0;
 	}
 	
 	public static boolean logado(HttpServletRequest request){

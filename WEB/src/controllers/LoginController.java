@@ -3,15 +3,16 @@ package controllers;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.UsuarioDAO;
 import languages.Idioma;
 import model.Usuario;
+import to.UsuarioTO;
 import utils.DadosSessao;
 
 /**
@@ -26,7 +27,6 @@ public class LoginController extends HttpServlet {
      */
     public LoginController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	@Override
@@ -52,18 +52,19 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario usuario = new Usuario();
-		String u = (String)(request.getParameter("usuario") != null?request.getParameter("usuario"):"");
-		String s = (String)(request.getParameter("senha") != null?request.getParameter("senha"):"");
-		usuario.setUsuario(u);
-		usuario.setSenha(s);
 		
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		usuario = usuarioDAO.buscar(usuario);
+		
+		UsuarioTO usuarioTo = new UsuarioTO();
+		usuarioTo.usuario = (String)(request.getParameter("usuario") != null?request.getParameter("usuario"):"");
+		usuarioTo.senha = (String)(request.getParameter("senha") != null?request.getParameter("senha"):"");
+
+		
+		Usuario usuario = new Usuario();
+		UsuarioTO usuarioBanco = usuario.buscar(usuarioTo);
 		RequestDispatcher rd = null;
-		if(usuario.getId() > 0){
+		if(usuarioBanco != null){
 			request.getSession().setAttribute("logado", true);
-			request.getSession().setAttribute("usuarioLogado", usuario);
+			request.getSession().setAttribute("usuarioLogado", usuarioTo);
 			rd = request.getRequestDispatcher("./");
 			
 		}else{
@@ -75,4 +76,10 @@ public class LoginController extends HttpServlet {
 		rd.forward(request, response);
 	}
 
+
+    @Override
+	public void init(ServletConfig config){
+		//todos os servlets do menu devem conter este metodo
+		ServiceLookup.setupDB();
+	}
 }

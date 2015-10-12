@@ -1,27 +1,32 @@
 package model;
 
+import java.util.ArrayList;
+
+import factory.DAOFactory;
+import to.AeronaveTO;
+import to.ListagemAeronaveTO;
+
 public class Aeronave {
 	
 	private int id;
 	private String codigo;
 	private String nome;
-	private int total_assentos;
-	private int qtd_assentos_A;
-	private int qtd_assentos_B;
-	private int qtd_assentos_C;
-	private int qtd_assentos_horizontais;
-	private int qtd_assentos_verticais;
+	private int qtdAssentosA;
+	private int qtdAssentosB;
+	private int qtdAssentosC;
+	private int qtdAssentosHorizontais;
+	private int qtdAssentosVerticais;
+	private ArrayList<Assento> assentos; 
 
 	public Aeronave(){
 		this.id = 0;
 		this.codigo = "";
 		this.nome = "";
-		this.total_assentos = 0;
-		this.qtd_assentos_A = 0;
-		this.qtd_assentos_B = 0;
-		this.qtd_assentos_C = 0;
-		this.qtd_assentos_horizontais = 0;
-		this.qtd_assentos_verticais = 0;
+		this.qtdAssentosA = 0;
+		this.qtdAssentosB = 0;
+		this.qtdAssentosC = 0;
+		this.qtdAssentosHorizontais = 0;
+		this.qtdAssentosVerticais = 0;
 	}
 
 	public int getId() {
@@ -48,50 +53,86 @@ public class Aeronave {
 		this.nome = nome;
 	}
 
-	public int getTotal_assentos() {
-		return this.qtd_assentos_A + this.qtd_assentos_B + this.qtd_assentos_C;
+	public int getTotalAssentos() {
+		return this.qtdAssentosA + this.qtdAssentosB + this.qtdAssentosC;
 	}
 
-	public int getQtd_assentos_A() {
-		return qtd_assentos_A;
+	public int getQtdAssentosA() {
+		return qtdAssentosA;
 	}
 
-	public void setQtd_assentos_A(int qtd_assentos_A) {
-		this.qtd_assentos_A = qtd_assentos_A;
+	public void setQtdAssentosA(int qtdAssentosA) {
+		this.qtdAssentosA = qtdAssentosA;
 	}
 
-	public int getQtd_assentos_B() {
-		return qtd_assentos_B;
+	public int getQtdAssentosB() {
+		return qtdAssentosB;
 	}
 
-	public void setQtd_assentos_B(int qtd_assentos_B) {
-		this.qtd_assentos_B = qtd_assentos_B;
+	public void setQtdAssentosB(int qtdAssentosB) {
+		this.qtdAssentosB = qtdAssentosB;
 	}
 
-	public int getQtd_assentos_C() {
-		return qtd_assentos_C;
+	public int getQtdAssentosC() {
+		return qtdAssentosC;
 	}
 
-	public void setQtd_assentos_C(int qtd_assentos_C) {
-		this.qtd_assentos_C = qtd_assentos_C;
+	public void setQtdAssentosC(int qtdAssentosC) {
+		this.qtdAssentosC = qtdAssentosC;
 	}
 
-	public int getQtd_assentos_horizontais() {
-		return qtd_assentos_horizontais;
+	public int getsetQtdAssentosHorizontais() {
+		return qtdAssentosHorizontais;
 	}
 
-	public void setQtd_assentos_horizontais(int qtd_assentos_horizontais) {
-		this.qtd_assentos_horizontais = qtd_assentos_horizontais;
+	public void setQtdAssentosHorizontais(int qtdAssentosHorizontais) {
+		this.qtdAssentosHorizontais = qtdAssentosHorizontais;
 	}
 
-	public int getQtd_assentos_verticais() {
-		return qtd_assentos_verticais;
+	public int getQtdAssentosVerticais() {
+		return qtdAssentosVerticais;
 	}
 
-	public void setQtd_assentos_verticais(int qtd_assentos_verticais) {
-		this.qtd_assentos_verticais = qtd_assentos_verticais;
+	public void setQtdAssentosVerticais(int qtdAssentosVerticais) {
+		this.qtdAssentosVerticais = qtdAssentosVerticais;
+	}
+
+	/**
+	 * @return the assentos
+	 */
+	public ArrayList<Assento> getAssentos() {
+		return assentos;
+	}
+
+	/**
+	 * @param assentos the assentos to set
+	 */
+	public void setAssentos(ArrayList<Assento> assentos) {
+		this.assentos = assentos;
 	}
 	
+	
+	
+	
+	public AeronaveTO incluir(AeronaveTO to){
+		return DAOFactory.getAeronaveDAO().incluir(to);
+	}
+	
+	public boolean remover(int id){
+		return DAOFactory.getAeronaveDAO().remover(id);
+	}
+	public ListagemAeronaveTO buscar(AeronaveTO to){
+		return DAOFactory.getAeronaveDAO().buscar(to);
+	}
+	public ListagemAeronaveTO listagem(){
+		return DAOFactory.getAeronaveDAO().listagem();
+	}
+	public AeronaveTO alterar(AeronaveTO to){
+		return DAOFactory.getAeronaveDAO().alterar(to);
+	}
+	public AeronaveTO buscarId(int id){
+		return DAOFactory.getAeronaveDAO().buscarId(id);
+	}
 	
 }
 
