@@ -26,6 +26,7 @@ public class ListagemVooTO extends ArrayList<VooTO> implements Serializable{
 				obj.put("id", to.id);
 				obj.put("codigo", to.codigo);
 				obj.put("nome", to.nome);
+				obj.put("preco", to.preco);
 				obj.put("data", f.format(to.data));
 				obj.put("aeroportoOrigem",to.aeroportoOrigem.toJSONObject() );
 				obj.put("aeroportoDestino", to.aeroportoDestino.toJSONObject());

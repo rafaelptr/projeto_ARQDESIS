@@ -12,8 +12,6 @@ public class Pagamento {
 	private int id;
 	private String status;
 	private String tipo;
-	private int cartaoId;
-	private Cartao cartao;
 	private String codigoTransacao;
 	
 	/**
@@ -39,30 +37,6 @@ public class Pagamento {
 	 */
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	/**
-	 * @return the cartaoId
-	 */
-	public int getCartaoId() {
-		return cartaoId;
-	}
-	/**
-	 * @param cartaoId the cartaoId to set
-	 */
-	public void setCartaoId(int cartaoId) {
-		this.cartaoId = cartaoId;
-	}
-	/**
-	 * @return the cartao
-	 */
-	public Cartao getCartao() {
-		return cartao;
-	}
-	/**
-	 * @param cartao the cartao to set
-	 */
-	public void setCartao(Cartao cartao) {
-		this.cartao = cartao;
 	}
 	/**
 	 * @return the tipo

@@ -55,16 +55,7 @@ public class DAOFactory {
 			return null;
 		}
 	}
-	public static CartaoDAO getCartaoDAO() {
-		switch (ConnFactory.getBanco()) {
-		case ConnFactory.MYSQL:
-			return new CartaoDAOMySQL();
-		case ConnFactory.POSTGRE:
-			return new CartaoDAOPostgreSQL();
-		default:
-			return null;
-		}
-	}
+	
 	public static PagamentoDAO getPagamentoDAO() {
 		switch (ConnFactory.getBanco()) {
 		case ConnFactory.MYSQL:

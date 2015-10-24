@@ -17,7 +17,8 @@
 	</head>
 	<body>
 	  <header class='container-fluid'>
-	  	<img src="https://www.google.com.br//images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  />
+<!-- 	  	<img src="https://www.google.com.br//images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"  /> -->
+		<img src="./assets/img/usjt-logo.png" style="height:150px;width:auto;"/>
 	  	<div class='language'>
 	  			<input type="hidden" id="idiomaSelecionado" value="<%=
 	  				(request.getSession().getAttribute("idiomaSelecionado") != null ?request.getSession().getAttribute("idiomaSelecionado") :"0")
@@ -44,6 +45,7 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" >
 		      <ul class="nav navbar-nav">
+	       		<% if(DadosSessao.usuarioPefil(request) == 2) {%>
 		        <li class="active"><a href="./"><%= Idioma.para(request, "inicio")%></a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Idioma.para(request, "aeroporto") %><span class="caret"></span></a>
@@ -66,13 +68,16 @@
 		            <li><a href="./ListagemAeronave"><%= Idioma.para(request,"consultar") %></a></li>
 		          </ul>
 		        </li>
+		        
+		        <% } %>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= Idioma.para(request, "passagem") %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#"><%= Idioma.para(request, "cadastrar") %></a></li>
-		            <li><a href="#"><%= Idioma.para(request, "consultar") %></a></li>
+		            <li><a href="./ComprarBilhete"><%= Idioma.para(request, "Comprar") %></a></li>
+		            <li><a href="./CancelarBilhete"><%= Idioma.para(request, "Cancelar") %></a></li>
 		          </ul>
 		        </li>
+		        <li><a href="./EfetuarCheckin"><%= Idioma.para(request, "efetuar_checkin") %></a></li>
 		      </ul>
 <!-- 		      <form class="navbar-form navbar-left" role="search"> -->
 <!-- 		        <div class="form-group"> -->

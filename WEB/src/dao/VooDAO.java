@@ -17,6 +17,8 @@ public abstract class VooDAO {
 	public abstract ListagemVooTO buscar(VooTO to);
 	
 	public abstract ListagemVooTO listagem();
+	
+	public abstract ListagemVooTO listagem(String origem,String destino);
 
 	public abstract VooTO alterar(VooTO to);
 

@@ -64,6 +64,9 @@ public class Bilhete {
 	public ListagemBilheteTO listagem(){
 		return DAOFactory.getBilheteDAO().listagem();
 	}
+	public BilheteTO checkin(String codigo){
+		return DAOFactory.getBilheteDAO().checkin(codigo);
+	}
 	public BilheteTO alterar(BilheteTO to){
 		return DAOFactory.getBilheteDAO().alterar(to);
 	}

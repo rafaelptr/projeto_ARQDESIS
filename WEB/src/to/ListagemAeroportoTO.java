@@ -1,9 +1,7 @@
 package to;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,8 +16,6 @@ public class ListagemAeroportoTO extends ArrayList<AeroportoTO> implements Seria
 	
 	public String toJSON(){
 		JSONArray v = new JSONArray();
-		Locale local = new Locale("pt","BR");
-		DateFormat f = DateFormat.getDateInstance(DateFormat.MEDIUM, local);
 		for(AeroportoTO to:this){
 			JSONObject obj = new JSONObject();
 			try {

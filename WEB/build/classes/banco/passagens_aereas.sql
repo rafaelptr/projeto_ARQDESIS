@@ -84,19 +84,6 @@ CREATE TABLE `bilhete` (
 
 /*Data for the table `bilhete` */
 
-/*Table structure for table `cartao` */
-
-DROP TABLE IF EXISTS `cartao`;
-
-CREATE TABLE `cartao` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `numero` int(11) NOT NULL,
-  `codigoSeguranca` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `cartao` */
-
 /*Table structure for table `pagamento` */
 
 DROP TABLE IF EXISTS `pagamento`;
@@ -159,11 +146,11 @@ CREATE TABLE `voo` (
   KEY `FK_voo_aeroporto_origem` (`codigo`),
   KEY `FK_voo_aeroporto_destino` (`aeroportoOrigemId`),
   KEY `FK_voo_aeronave` (`aeronaveId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `voo` */
 
-insert  into `voo`(`id`,`nome`,`codigo`,`aeroportoOrigemId`,`aeroportoDestinoId`,`aeronaveId`,`preco`,`data`) values (1,'Voo para Guarulhos','012RE',4,3,58,'1003.67','2015-10-13 00:00:00');
+insert  into `voo`(`id`,`nome`,`codigo`,`aeroportoOrigemId`,`aeroportoDestinoId`,`aeronaveId`,`preco`,`data`) values (1,'Voo para Guarulhos','012RE',4,3,58,'1003.67','2015-10-13 00:00:00'),(2,'Voo para Congonhas','R@123123',4,6,54,'1399.00','2015-10-14 00:00:00'),(3,'Voo para Porto Alegre','GUA-PORTO',3,6,57,'1848.00','2015-10-15 00:00:00'),(4,'Gurulhos Congonhas','GRU-CGH',3,4,53,'11310.00','2015-10-13 00:00:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

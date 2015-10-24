@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Aeroporto;
-import model.Voo;
 import to.ListagemAeroportoTO;
-import to.ListagemVooTO;
 
 /**
  * Servlet implementation class VooController

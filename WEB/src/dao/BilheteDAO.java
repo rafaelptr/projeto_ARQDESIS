@@ -17,6 +17,8 @@ public abstract class BilheteDAO {
 	public abstract ListagemBilheteTO buscar(BilheteTO to);
 	
 	public abstract ListagemBilheteTO listagem();
+	
+	public abstract BilheteTO checkin(String codigo);
 
 	public abstract BilheteTO alterar(BilheteTO to);
 

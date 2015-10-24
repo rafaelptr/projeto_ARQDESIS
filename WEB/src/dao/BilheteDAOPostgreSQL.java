@@ -16,6 +16,51 @@ public class BilheteDAOPostgreSQL extends BilheteDAO{
 		conn.close();
 	}
 
+	public BilheteTO checkin(String codigo) {
+		String alteracao = " SELECT * FROM bilhete "
+				+ "where codigo = ? ";
+		BilheteTO to = null;
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnFactory.conectar();
+			pst = conn.prepareStatement(alteracao);
+			pst.setString(1,codigo);
+			rs = pst.executeQuery();
+			if(rs.next()){
+				to = new BilheteTO();
+				to.id = rs.getInt("id");
+				to.codigo = rs.getString("codigo");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(rs != null){
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pst != null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn != null){
+				try {
+					desconectar(conn);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return to;
+	}
 	@Override
 	public BilheteTO incluir(BilheteTO to){
 //		to.codigo

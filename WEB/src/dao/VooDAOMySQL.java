@@ -373,5 +373,61 @@ public class VooDAOMySQL extends VooDAO{
 		}
 		return listagemTO;
 	}
+	public ListagemVooTO listagem(String origem , String destino) {
+		ListagemVooTO listagemTO = new ListagemVooTO();
+		String alteracao = " SELECT * FROM voo WHERE aeroportoOrigemId='"+origem+"' and  aeroportoDestinoId='"+destino+"'";
+
+		Aeronave aeronave = new Aeronave();
+		Aeroporto aeroporto = new Aeroporto();
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			conn = ConnFactory.conectar();
+			pst = conn.prepareStatement(alteracao);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				VooTO to = new VooTO();
+				to.id = rs.getInt("id");
+				to.nome = rs.getString("nome");
+				to.codigo = rs.getString("codigo");
+				to.aeroportoOrigemId = rs.getInt("aeroportoOrigemId");
+				to.aeroportoOrigem = aeroporto.buscarId(to.aeroportoOrigemId);
+				to.aeroportoDestinoId = rs.getInt("aeroportoDestinoId");
+				to.aeroportoDestino= aeroporto.buscarId(to.aeroportoDestinoId);
+				to.aeronaveId = rs.getInt("aeronaveId");
+				to.aeronave = aeronave.buscarId(to.aeronaveId);
+				to.preco = rs.getDouble("preco");
+				to.data = new java.util.Date (rs.getDate("data").getTime());
+				listagemTO.add(to);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(rs != null){
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(pst != null){
+				try {
+					pst.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn != null){
+				try {
+					desconectar(conn);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return listagemTO;
+	}
 
 }

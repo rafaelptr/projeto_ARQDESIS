@@ -205,6 +205,9 @@ public class Voo {
 	public ListagemVooTO listagem(){
 		return DAOFactory.getVooDAO().listagem();
 	}
+	public ListagemVooTO listagem(String origem,String destino){
+		return DAOFactory.getVooDAO().listagem( origem,destino);
+	}
 	public VooTO alterar(VooTO to){
 		return DAOFactory.getVooDAO().alterar(to);
 	}

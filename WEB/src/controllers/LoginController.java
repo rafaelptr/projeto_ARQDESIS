@@ -63,9 +63,16 @@ public class LoginController extends HttpServlet {
 		UsuarioTO usuarioBanco = usuario.buscar(usuarioTo);
 		RequestDispatcher rd = null;
 		if(usuarioBanco != null){
-			request.getSession().setAttribute("logado", true);
-			request.getSession().setAttribute("usuarioLogado", usuarioTo);
-			rd = request.getRequestDispatcher("./");
+			if(usuarioBanco.id > 0){
+				request.getSession().setAttribute("logado", true);
+				request.getSession().setAttribute("usuarioLogado", usuarioBanco);
+				rd = request.getRequestDispatcher("./");
+			}else{
+				request.getSession().setAttribute("logado", false);
+				request.getSession().setAttribute("usuarioLogado", null);
+				request.setAttribute("ErrorMsg",Idioma.para(request, "usuario_senha_invalidos"));
+				rd = request.getRequestDispatcher("views/login/login.jsp");
+			}
 			
 		}else{
 			request.getSession().setAttribute("logado", false);
